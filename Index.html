@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Dashboard</title>
+</head>
+
+<body>
+    <h1 class="top-title">&#127775; Personal Dashboard &#127775;</h1>
+    <br>
+    <!--profile card: here is the block for creating the profile card-->
+    <!-- combining my profile card and gif here for layout purposes -->
+    <div id="topSection">
+        <div id="profileCard">
+        <h2 id="displayName">Your Name</h2>
+        <p id="displayEmail">email@example.com</p>
+        <p>Favorite Color: <span id="displayColor">-</span></p>
+        </div>
+        <div id="updateProfileSec">
+        <!--input form: place for user to input the updated name, email, and favorite color followed by the button to update-->
+        <h2>Update Your Profile!</h2>
+
+        <input type="text" id="name" placeholder="Name" />
+        <br /><br />
+
+        <input type="email" id="email" placeholder="Email" />
+        <br /><br />
+
+        <input type="text" id="color" placeholder="Enter a color" />
+        <br /><br />
+
+        <button id="updateBtn">Update</button>
+        </div>
+        
+        <!--todo list with filter for active, completed, and all tasks-->
+        <div id="toDoBox">
+            <h3>To Do List</h3>
+
+            <input type="text" id="toDoInput" placeholder="New Task" />
+            <button id="addToDoBtn">Add this task</button>
+            <button id="clearBtn">Clear Tasks</button>
+
+            <br /><br />
+
+            <select id="filterSelect">
+                <option value="all">All</option>
+                <option value="done">Done</option>
+                <option value="active">Active</option>
+            </select>
+            <ul id="toDoList"></ul>
+        </div>
+
+        <!-- API section-->
+        <div id="apiSection">
+            <h3>External Data</h3>
+            <button id="loadUsersBtn">Load Users</button>
+            <p id="status"></p>
+            <ul id="dataList"></ul>
+        </div>
+    </div>
+
+        <!--gif: places a gif for funsies-->
+        <div id="gif">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExanJpYnFkNWo4d29qaG13bm9jNDVqYTBxcHIwaTc5NDk0aG9uaGR2byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UpzSszqw1BjD87KoPt/giphy.gif" alt="Dancin" style= "float: center;">
+        </div>
+<style> 
+    /* "Personal Dashboard" */
+    .top-title {
+        font-size: 36px;
+        font-weight: 600;
+        display: block;
+        color: white;
+        border: 4px solid #333;
+        width: 470px;
+        margin: auto;
+        }
+    /* background/margins */
+    body { 
+        font-family: sans-serif;
+        padding: 20px;
+        background: black;
+        align-items: center;
+        }
+    /* Alignment of card/gif/todo */
+    #topSection { 
+        display: flex;
+        justify-content: center; /*centers it horizontally*/
+        align-items: center; /* vertical alignment */
+        gap: 40px; 
+        margin-top: 40px;
+        }
+    /* updating profile section*/
+    #updateProfileSec {
+        border: 10px solid #333;
+        background: white;
+        padding: 16px;
+        width: 300px;
+        border-radius: 8px;
+        text-align: center;
+    }
+    /* Profile Card */
+    #profileCard {
+        border: 10px solid #333;
+        background: white;
+        padding: 16px;
+        width: 300px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        align-items: center;
+        }
+    /* GIF */
+    #gif{
+        align-items: normal;
+        display: none;
+        margin-top: 20px;
+        }
+    /* Form container for profile input */
+    .form-box {
+        border: 5px solid #333;
+        padding: 16px;
+        width: 300px;
+        border-radius: 8px;
+        color: white;
+        }
+    /* Inputs */
+    input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        }
+    /* buttons */
+    button {
+        padding: 12px 16px;
+        cursor: pointer;
+        background-color: lavender;
+        text-align: center;
+        align-items: center;
+        }
+    /* To-Do box styled like profile card */
+    #toDoBox {
+        border: 2px solid #333;          
+        background: lavenderblush;              
+        padding: 16px;
+        font-size: 12px;
+        margin: auto;
+        width: 250px;                     /* slightly smaller than profile card */
+        border-radius: 8px;               /* same radius as profile card */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* subtle shadow for depth */
+        }
+    /* Headings inside To-Do */
+    #toDoBox h3 {
+        text-align: center;
+        margin-bottom: 12px;
+        }
+    /* Inputs and select styling */
+    #toDoBox input,
+    #toDoBox select {
+        width: 100%;
+        padding: 6px 8px;
+        margin-bottom: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        }
+    /* Add button */
+    #toDoBox button {
+        width: 100%;
+        padding: 8px;
+        background-color: lavender;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+        }
+    /* Clear button*/
+    #clearBtn {
+        margin-top: 8px;
+        background-color: lavender;
+        }
+    /* To-Do list items */
+    #toDoList {
+        list-style: none;
+        padding: 0;
+        margin-top: 10px;
+        }
+
+    #toDoList li {
+        padding: 6px 8px;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+        }
+
+    #toDoList li:last-child {
+        border-bottom: none;
+        }
+    #apiSection {
+        border: 2px solid #333;
+        padding: 10px;
+        width: 250px;
+        background: white;
+        }
+
+    #dataList li {
+        margin: 5px 0;
+        cursor: pointer;
+        }
+
+    #dataList li:hover {
+        color: blue;
+        }
+</style>
+<script src="App.js"></script>
+
+</body>
+</html>
