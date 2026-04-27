@@ -1,8 +1,8 @@
 {
-  "dependencies": {
-    "readline-sync": "^1.4.10"
-  },
+  "name": "dashboard-backend",
+  "version": "1.0.0",
+  "main": "server.js",
   "scripts": {
-    "start": "node App.js"
+    "start": "node server.js"
   }
 }
